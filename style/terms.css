@@ -1,0 +1,13 @@
+/* Terms page specific styles */
+:root {}
+
+.terms-hero {
+  padding: 48px 0 16px;
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+  border-bottom: 1px solid var(--border);
+}
+.terms-hero h1 { margin: 0 0 6px; letter-spacing: -0.02em; }
+
+/* Improve readability of long lists */
+.terms-list { display: grid; gap: 10px; padding-left: 18px; }
+.terms-list li { line-height: 1.7; }

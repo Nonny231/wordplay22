@@ -1,0 +1,232 @@
+/* FAQ Page Styles */
+
+:root {
+  --brand: #0b5cff;
+  --brand-600: #0a4fe3;
+  --ink: #0f172a;
+  --muted-ink: #475569;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+}
+
+/* Removed conflicting breadcrumb styles that override main styles */
+
+/* FAQ Hero */
+.faq-hero {
+  padding: 48px 0;
+  background: radial-gradient(1200px 500px at 20% -10%, rgba(11, 92, 255, 0.12), transparent),
+    linear-gradient(180deg, #fff 0%, #fff 100%);
+}
+
+.faq-hero h1 {
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.faq-container {
+  max-width: 800px;
+}
+
+/* Accordion Sections */
+.accordion-section {
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--brand);
+}
+
+/* Accordion Items */
+.accordion-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.accordion-item.open {
+  border-color: var(--brand);
+  box-shadow: 0 8px 20px rgba(11, 92, 255, 0.15);
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 16px;
+  background: #fff;
+  border: none;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background .2s ease;
+  font-size: 16px;
+}
+
+.accordion-header:hover {
+  background: #f8fafc;
+}
+
+.accordion-header .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 700;
+  transition: transform .3s ease;
+  flex-shrink: 0;
+}
+
+.accordion-item.open .accordion-header .icon {
+  transform: rotate(90deg);
+}
+
+.accordion-panel {
+  /* ensure panels are explicitly hidden by default and fully display when open */
+  display: none;
+  padding: 0 16px 16px;
+  color: var(--muted-ink);
+  animation: slideDown .3s ease;
+  width: 100%; /* Added from update */
+}
+
+/* Override hidden attribute from script.js to show panels when accordion-item has open class */
+.accordion-item.open .accordion-panel {
+  display: block !important;
+}
+
+.accordion-item.open .accordion-panel[hidden] {
+  display: block !important;
+}
+
+.accordion-panel p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.accordion-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: grid;
+  gap: 8px;
+}
+
+.faq-list li {
+  padding-left: 20px;
+  position: relative;
+}
+
+.faq-list li::before {
+  content: "•";
+  color: var(--brand);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA Section */
+.faq-cta {
+  background: linear-gradient(135deg, rgba(11, 92, 255, 0.1) 0%, rgba(11, 92, 255, 0.05) 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  margin-top: 48px;
+  box-shadow: var(--shadow);
+}
+
+.faq-cta h2 {
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+
+.faq-cta p {
+  color: var(--muted-ink);
+  margin: 0 0 20px;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .faq-hero {
+    padding: 32px 0;
+  }
+
+  .faq-hero h1 {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .accordion-header {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .accordion-panel {
+    padding: 0 14px 14px;
+  }
+
+  .faq-cta {
+    padding: 24px;
+  }
+
+  .faq-cta h2 {
+    font-size: 22px;
+  }
+
+  .faq-cta p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-hero h1 {
+    font-size: 20px;
+  }
+
+  .accordion-item {
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  .section-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+}
